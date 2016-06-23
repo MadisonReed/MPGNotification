@@ -47,11 +47,11 @@ typedef NS_ENUM(NSInteger, MPGNotificationButtonConfigration) {
     MPGNotificationButtonConfigrationZeroButtons    = 0,
     MPGNotificationButtonConfigrationOneButton,
     MPGNotificationButtonConfigrationTwoButton,
-    #warning JZ Locally modified
+    // MR modification
     //MPGNotificationButtonConfigrationCloseButton
 };
 
-#warning JZ Locally modified
+// MR modification
 // Modified to allow positioning of alert
 // Based on https://github.com/MPGNotification/MPGNotification/pull/29
 // Sets the notification position.
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, MPGNotificationPosition) {
     MPGNotificationPositionAboveTabBar
 };
 
-#warning JZ Locally modified
+// MR modification
 // Sets the buttons position.
 typedef NS_ENUM(NSInteger, MPGButtonPosition) {
     MPGButtonPositionNone     = -1,
@@ -80,12 +80,12 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 @interface MPGNotification : UIScrollView <UIScrollViewDelegate, UIDynamicAnimatorDelegate>
 
 // Public accessors to private properties
-#warning JZ Locally modified
+// MR modification
 //@property (nonatomic, readonly) UIView *backgroundView; // to read tag value
 @property (nonatomic) UIView *backgroundView; // to read tag value
 @property (nonatomic, readonly) UIButton *firstButton; // to read tag value
 @property (nonatomic, readonly) UIButton *secondButton;  // to read tag value
-#warning JZ Locally modified
+// MR modification
 //@property (nonatomic, readonly) UIButton *closeButton;  // to read tag value
 
 // Properties used for basic styling
@@ -103,7 +103,7 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 // Allows 'swipe to dismiss' action on the Notification. Defaults to YES.
 @property (nonatomic) BOOL swipeToDismissEnabled;
 
-#warning JZ Locally modified
+// MR modification
 // Modified to allow positioning of alert
 // Based on https://github.com/MPGNotification/MPGNotification/pull/29
 // Allows full-screen messages on iPad. Defaults to NO, similar to iOS Push Notifications.
@@ -121,13 +121,13 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 // Used to specify the type of animation that the notification should use to show and dismiss.
 @property (nonatomic) MPGNotificationAnimationType animationType;
 
-#warning JZ Locally modified
+// MR modification
 // Modified to allow positioning of alert
 // Based on https://github.com/MPGNotification/MPGNotification/pull/29
 // Used to specify the notification position.
 @property (nonatomic) MPGNotificationPosition notificationPositionType;
 
-#warning JZ Locally modified
+// MR modification
 // Used to specify the buttons position.
 @property (nonatomic) MPGButtonPosition buttonPositionType;
 
@@ -151,7 +151,7 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 // Dismiss the notification. Occurs automatically if any enabled button is pressed.
 - (void)dismissWithAnimation:(BOOL)animated;
 
-#warning JZ Locally modified
+// MR modification
 @property(nonatomic) CGFloat notificationHeight;
 - (UIWindow *)_topAppWindow;
 

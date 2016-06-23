@@ -33,12 +33,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#warning JZ Locally modified
+// MR modification
 // Modified to allow positioning of alert
 // Based on https://github.com/MPGNotification/MPGNotification/pull/29
 //static const CGFloat kMaximumNotificationWidth = 512;
 
-#warning JZ Locally modified
+// MR modification
 //static const CGFloat kNotificationHeight = 64;
 static const CGFloat kIconImageSize = 32.0;
 static const NSTimeInterval kLinearAnimationTime = 0.25;
@@ -69,11 +69,11 @@ static const CGFloat kColorAdjustmentLight = 0.35;
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *subtitleLabel;
 
-#warning JZ Locally modified
+// MR modification
 //@property (nonatomic, readwrite) UIView *backgroundView;
 @property (nonatomic, readwrite) UIButton *firstButton;
 @property (nonatomic, readwrite) UIButton *secondButton;
-#warning JZ Locally modified
+// MR modification
 //@property (nonatomic, readwrite) UIButton *closeButton;
 
 @property (nonatomic, strong) UIView *swipeHintView;
@@ -81,7 +81,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
 // state
 @property (nonatomic) BOOL notificationRevealed;
 @property (nonatomic) BOOL notificationDragged;
-#warning JZ Locally modified
+// MR modification
 // Modified to allow positioning of alert
 // Based on https://github.com/MPGNotification/MPGNotification/pull/29
 //@property (nonatomic) BOOL notificationDestroyed;
@@ -102,16 +102,16 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     // If the App has a keyWindow, get it, else get the 'top'-most window in the App's hierarchy.
     UIWindow *window = [self _topAppWindow];
 
-    #warning JZ Locally modified
+    // MR modification
     self.notificationHeight = 64;
 
     // Now get the 'top'-most object in that window and use its width for the Notification.
     UIView *topSubview = [[window subviews] lastObject];
-    #warning JZ Locally modified
+    // MR modification
     //CGRect notificationFrame = CGRectMake(0, 0, CGRectGetWidth(topSubview.bounds), kNotificationHeight);
     CGRect notificationFrame = CGRectMake(0, 0, CGRectGetWidth(topSubview.bounds), self.notificationHeight);
     
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     // Set default position type.
@@ -151,7 +151,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    #warning JZ Locally modified
+    // MR modification
     //NSAssert(NO, @"Wrong initializer. Use the base init method, or initialize with the convenience class method provided.");
     self = [super initWithFrame:frame];
     if (self) {
@@ -176,7 +176,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     static const CGFloat kPaddingX = 5;
     CGFloat notificationWidth = CGRectGetWidth(self.bounds);
     
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     //CGFloat maxWidth = 0.5 * (notificationWidth - kMaximumNotificationWidth);
@@ -185,7 +185,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     // ICON IMAGE
     static const CGFloat kIconPaddingY = 15;
     
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     //self.iconImageView.frame = CGRectMake(contentPaddingX + kPaddingX,
@@ -195,21 +195,21 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     self.iconImageView.frame = CGRectMake(kPaddingX, kIconPaddingY, kIconImageSize, kIconImageSize);
     
     // BUTTONS
-    #warning JZ Locally modified
+    // MR modification
     //static const CGFloat kButtonOriginXOffset = 75;
     //static const CGFloat kCloseButtonOriginXOffset = 40;
     
-    #warning JZ Locally modified
+    // MR modification
     //static const CGFloat kButtonWidthDefault = 64;
     static const CGFloat kButtonWidthDefault = 75;
     static const CGFloat kButtonPadding = 2.5;
     
-    #warning JZ Locally modified
+    // MR modification
     //static const CGFloat kCloseButtonOriginY = 17;
     //static const CGFloat kCloseButtonWidth = 25;
     //static const CGFloat kCloseButtonHeight = 30;
     
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     //CGFloat buttonOriginX = notificationWidth - kButtonOriginXOffset - contentPaddingX;
@@ -238,29 +238,29 @@ static const CGFloat kColorAdjustmentLight = 0.35;
         default:
             break;
     }
-    #warning JZ Locally modified
+    // MR modification
     //CGFloat closeButtonOriginX = notificationWidth - kCloseButtonOriginXOffset;
-    #warning JZ Locally modified
+    // MR modification
     //CGFloat firstButtonOriginY = (self.secondButton) ? 6 : 17;
     //CGFloat buttonHeight = (self.firstButton && self.secondButton) ? 25 : 30;
     //CGFloat secondButtonOriginY = firstButtonOriginY + buttonHeight + kButtonPadding;
     
     self.firstButton.frame = CGRectMake(firstButtonOriginX, firstButtonOriginY, kButtonWidthDefault, buttonHeight);
     self.secondButton.frame = CGRectMake(secondButtonOriginX, secondButtonOriginY, kButtonWidthDefault, buttonHeight);
-    #warning JZ Locally modified
+    // MR modification
     //self.closeButton.frame = CGRectMake(closeButtonOriginX, kCloseButtonOriginY, kCloseButtonWidth, kCloseButtonHeight);
     
     
     // TITLE LABEL
     NSParameterAssert(self.title);
     
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     static const CGFloat kTitleLabelPaddingX = 8;
     static const CGFloat kTitleLabelHeight = 20;
     
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     //CGFloat textTrailingX = (self.firstButton) ? CGRectGetWidth(self.bounds) - CGRectGetMinX(self.firstButton.frame) + 9 : contentPaddingX + 20;
@@ -282,7 +282,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     
     // expected subtitle calculations
     static const CGFloat kSubtitleHeight = 50;
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     //CGSize expectedSubtitleSize = CGSizeZero;
@@ -319,7 +319,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     // SUBTITLE LABEL
     CGFloat subtitlePaddingY = 1;
     
-    #warning JZ Locally modified
+    // MR modification
     if (!self.title || [self.title isEqualToString:@""]) {
         CGFloat subtitlePaddingY = 30;
         self.subtitleLabel.frame = CGRectMake(textPaddingX,
@@ -533,11 +533,11 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             NSParameterAssert(buttonTitles == nil || buttonTitles.count == 0);
             self.firstButton = nil;
             self.secondButton = nil;
-            #warning JZ Locally modified
+            // MR modification
             //self.closeButton = nil;
             break;
             
-#warning JZ Locally modified
+// MR modification
 //        case MPGNotificationButtonConfigrationCloseButton: {
 //            
 //            self.firstButton = nil;
@@ -561,7 +561,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             // note: configuration typedef value is matches # of buttons
             NSParameterAssert(buttonTitles.count == configuration);
             
-            #warning JZ Locally modified
+            // MR modification
             //self.closeButton = nil;
             
             NSString *firstButtonTitle = buttonTitles[0];
@@ -622,7 +622,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     
     // Called to display the initiliased notification on screen.
    
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     //Modify y origin of notification frame based on its position type.
@@ -641,13 +641,13 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             // Now get the 'top'-most object in that window and use its MaxY for positioning the notification.
             UIView *topSubview = [[window subviews] lastObject];
             CGRect frame = self.frame;
-            #warning JZ Locally modified
+            // MR modification
             //frame.origin.y = CGRectGetMaxY(topSubview.bounds) - kNotificationHeight;
             frame.origin.y = CGRectGetMaxY(topSubview.bounds) - self.notificationHeight;
             self.frame = frame;
             break;
         }
-        #warning JZ Locally modified
+        // MR modification
         case MPGNotificationPositionAboveTabBar:{
             // If the App has a keyWindow, get it, else get the 'top'-most window in the App's hierarchy.
             UIWindow *window = [self _topAppWindow];
@@ -666,7 +666,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     
     self.notificationRevealed = YES;
     
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     //[self _setupNotificationViews];
@@ -691,7 +691,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     switch (self.animationType) {
         case MPGNotificationAnimationTypeLinear: {
             
-            #warning JZ Locally modified
+            // MR modification
             // Modified to allow positioning of alert
             // Based on https://github.com/MPGNotification/MPGNotification/pull/29
             // move notification off-screen based on its position type.
@@ -702,7 +702,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             self.frame = frame;
             
             [UIView animateWithDuration:kLinearAnimationTime animations:^{
-                #warning JZ Locally modified
+                // MR modification
                 // Modified to allow positioning of alert
                 // Based on https://github.com/MPGNotification/MPGNotification/pull/29
                 //self.contentOffset = CGPointZero;
@@ -719,7 +719,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             
         case MPGNotificationAnimationTypeDrop: {
             
-            #warning JZ Locally modified
+            // MR modification
             // Modified to allow positioning of alert
             // Based on https://github.com/MPGNotification/MPGNotification/pull/29
             //self.backgroundView.center = CGPointMake(self.center.x,
@@ -732,7 +732,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             
             self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self];
             
-            #warning JZ Locally modified
+            // MR modification
             // Modified to allow positioning of alert
             // Based on https://github.com/MPGNotification/MPGNotification/pull/29
             //Set gravity behavior and its direction based on its position type.
@@ -745,7 +745,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             CGFloat notificationWidth = CGRectGetWidth(self.bounds);
             CGFloat notificationHeight = CGRectGetHeight(self.bounds);
             
-            #warning JZ Locally modified
+            // MR modification
             // Modified to allow positioning of alert
             // Based on https://github.com/MPGNotification/MPGNotification/pull/29
             //Set collision behavior based on its position type.
@@ -802,7 +802,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             case MPGNotificationAnimationTypeDrop: {
                 
                 [UIView animateWithDuration:kLinearAnimationTime animations:^{
-                    #warning JZ Locally modified
+                    // MR modification
                     // Modified to allow positioning of alert
                     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
                     //self.contentOffset = CGPointMake(0, CGRectGetHeight(self.bounds));
@@ -818,7 +818,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
             }
                 
             case MPGNotificationAnimationTypeSnap: {
-                #warning JZ Locally modified
+                // MR modification
                 // Modified to allow positioning of alert
                 // Based on https://github.com/MPGNotification/MPGNotification/pull/29
                 //self.contentOffset = CGPointMake(0, CGRectGetHeight(self.bounds));
@@ -894,7 +894,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     
     if (self.duration > 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            #warning JZ Locally modified
+            // MR modification
             // Modified to allow positioning of alert
             // Based on https://github.com/MPGNotification/MPGNotification/pull/29
             //if (self.notificationDragged == NO && self.notificationDestroyed == NO) {
@@ -927,7 +927,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
 }
 
 - (void)_destroyNotification {
-    #warning JZ Locally modified
+    // MR modification
     // Modified to allow positioning of alert
     // Based on https://github.com/MPGNotification/MPGNotification/pull/29
     //if (!self.notificationDestroyed) {
@@ -969,7 +969,7 @@ static const CGFloat kColorAdjustmentLight = 0.35;
     }
 }
 
-#warning JZ Locally modified
+// MR modification
 // Modified to allow positioning of alert
 // Based on https://github.com/MPGNotification/MPGNotification/pull/29
 //- (void)_setupNotificationViews {
