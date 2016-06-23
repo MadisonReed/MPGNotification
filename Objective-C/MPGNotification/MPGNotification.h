@@ -47,7 +47,26 @@ typedef NS_ENUM(NSInteger, MPGNotificationButtonConfigration) {
     MPGNotificationButtonConfigrationZeroButtons    = 0,
     MPGNotificationButtonConfigrationOneButton,
     MPGNotificationButtonConfigrationTwoButton,
-    MPGNotificationButtonConfigrationCloseButton
+    #warning JZ Locally modified
+    //MPGNotificationButtonConfigrationCloseButton
+};
+
+#warning JZ Locally modified
+// Modified to allow positioning of alert
+// Based on https://github.com/MPGNotification/MPGNotification/pull/29
+// Sets the notification position.
+typedef NS_ENUM(NSInteger, MPGNotificationPosition) {
+    MPGNotificationPositionTop          = 0,
+    MPGNotificationPositionBottom,
+    MPGNotificationPositionAboveTabBar
+};
+
+#warning JZ Locally modified
+// Sets the buttons position.
+typedef NS_ENUM(NSInteger, MPGButtonPosition) {
+    MPGButtonPositionNone     = -1,
+    MPGButtonPositionRight    = 0,
+    MPGButtonPositionBottom
 };
 
 // Block to handle button presses
@@ -61,10 +80,13 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 @interface MPGNotification : UIScrollView <UIScrollViewDelegate, UIDynamicAnimatorDelegate>
 
 // Public accessors to private properties
-@property (nonatomic, readonly) UIView *backgroundView; // to read tag value
+#warning JZ Locally modified
+//@property (nonatomic, readonly) UIView *backgroundView; // to read tag value
+@property (nonatomic) UIView *backgroundView; // to read tag value
 @property (nonatomic, readonly) UIButton *firstButton; // to read tag value
 @property (nonatomic, readonly) UIButton *secondButton;  // to read tag value
-@property (nonatomic, readonly) UIButton *closeButton;  // to read tag value
+#warning JZ Locally modified
+//@property (nonatomic, readonly) UIButton *closeButton;  // to read tag value
 
 // Properties used for basic styling
 @property (nonatomic, strong) NSString *title; // required
@@ -81,8 +103,11 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 // Allows 'swipe to dismiss' action on the Notification. Defaults to YES.
 @property (nonatomic) BOOL swipeToDismissEnabled;
 
+#warning JZ Locally modified
+// Modified to allow positioning of alert
+// Based on https://github.com/MPGNotification/MPGNotification/pull/29
 // Allows full-screen messages on iPad. Defaults to NO, similar to iOS Push Notifications.
-@property (nonatomic) BOOL fullWidthMessages;
+//@property (nonatomic) BOOL fullWidthMessages;
 
 // To set the title color of the notification. Defaults to [UIColor whiteColor].
 @property (nonatomic, strong) UIColor *titleColor;
@@ -95,6 +120,16 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 
 // Used to specify the type of animation that the notification should use to show and dismiss.
 @property (nonatomic) MPGNotificationAnimationType animationType;
+
+#warning JZ Locally modified
+// Modified to allow positioning of alert
+// Based on https://github.com/MPGNotification/MPGNotification/pull/29
+// Used to specify the notification position.
+@property (nonatomic) MPGNotificationPosition notificationPositionType;
+
+#warning JZ Locally modified
+// Used to specify the buttons position.
+@property (nonatomic) MPGButtonPosition buttonPositionType;
 
 // Sets the button handler block directly; is also be set indirectly by calling showWithButtonHandler:
 @property (nonatomic, copy) MPGNotificationButtonHandler buttonHandler;
@@ -115,5 +150,9 @@ typedef void (^MPGNotificationDismissHandler)(MPGNotification *notification);
 
 // Dismiss the notification. Occurs automatically if any enabled button is pressed.
 - (void)dismissWithAnimation:(BOOL)animated;
+
+#warning JZ Locally modified
+@property(nonatomic) CGFloat notificationHeight;
+- (UIWindow *)_topAppWindow;
 
 @end
